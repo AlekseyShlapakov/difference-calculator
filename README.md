@@ -1,4 +1,4 @@
-# frontend-project-lvl2
+# Difference calculator
 
 # CodeClimate Maintainability Badge
 
