@@ -1,3 +1,5 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable consistent-return */
 import fs from 'fs';
 import path from 'path';
 import process from 'process';
