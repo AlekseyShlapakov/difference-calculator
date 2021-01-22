@@ -8,5 +8,5 @@
 
 [![CI](https://github.com/AlekseyShlapakov/frontend-project-lvl2/workflows/Node%20CI/badge.svg)](https://github.com/AlekseyShlapakov/frontend-project-lvl2/actions?query=workflow%3A%22Node+CI%22)<br><br>
 
-[![asciicast](https://asciinema.org/a/SZwJmNlOAgvEHLLacvGqCx2Cz.svg)](https://asciinema.org/a/SZwJmNlOAgvEHLLacvGqCx2Cz)
+[![asciicast](https://asciinema.org/a/SVkkmQNrUo4yHOLKcigXdiOGs.svg)](https://asciinema.org/a/SVkkmQNrUo4yHOLKcigXdiOGs)
 
