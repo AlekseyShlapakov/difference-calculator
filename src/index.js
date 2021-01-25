@@ -1,14 +1,12 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable consistent-return */
-import fs from 'fs';
-import path from 'path';
-import process from 'process';
 import _ from 'lodash';
+import parseFile from './parsers.js';
 
 const genDiff = (filePath1, filePath2) => {
-  const data1 = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), filePath1), 'utf8'));
+  const data1 = parseFile(filePath1);
 
-  const data2 = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), filePath2), 'utf8'));
+  const data2 = parseFile(filePath2);
 
   const sharedData = _.union(Object.keys(data1), Object.keys(data2))
     .sort()
@@ -37,6 +35,7 @@ const genDiff = (filePath1, filePath2) => {
   return newData;
 };
 
-// genDiff('__tests__/__fixtures__/file1.json', '__tests__/__fixtures__/file2.json');
+// genDiff('__tests__/__fixtures__/file1.json', '__tests__/__fixtures__/file2.yml');
+// console.log(('genDiff'), genDiff('__tests__/__fixtures__/file1.json', '__tests__/__fixtures__/file2.yml'));
 
 export default genDiff;
