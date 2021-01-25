@@ -7,9 +7,9 @@
 # Github Actions
 
 [![CI](https://github.com/AlekseyShlapakov/frontend-project-lvl2/workflows/Node%20CI/badge.svg)](https://github.com/AlekseyShlapakov/frontend-project-lvl2/actions?query=workflow%3A%22Node+CI%22)<br><br>
-# gendiff file1.json file2.json<br><br>
+# gendiff file1.json file2.json<br>
 [![asciicast](https://asciinema.org/a/SVkkmQNrUo4yHOLKcigXdiOGs.svg)](https://asciinema.org/a/SVkkmQNrUo4yHOLKcigXdiOGs)
-# gendiff file1.yml file2.yml<br><br>
+# gendiff file1.yml file2.yml<br>
 [![asciicast](https://asciinema.org/a/TALUMVsbxsFSe9p23OPghhVGn.svg)](https://asciinema.org/a/TALUMVsbxsFSe9p23OPghhVGn)
 
 
