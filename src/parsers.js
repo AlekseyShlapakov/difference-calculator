@@ -1,5 +1,4 @@
 import fs from 'fs';
-// import ini from 'ini';
 import path from 'path';
 import yaml from 'js-yaml';
 
@@ -14,10 +13,6 @@ const parseFile = (filePath) => {
   } else if (format === '.yml') {
     parse = yaml.load(data);
   }
-
-  // else if (format === '.ini') {
-  // parse = ini.parse;
-  // }
   return parse;
 };
 
