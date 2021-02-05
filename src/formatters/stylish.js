@@ -1,44 +1,48 @@
-const stringify = (value, depth, spacesCount = 2) => {
-  const indent = ' '.repeat(spacesCount * depth);
-  const indentOfEnd = ' '.repeat(spacesCount * (depth - 1));
+import _ from 'lodash';
 
-  if (typeof value !== 'object') {
+const makeIndent = (depth, spacesCount = 4) => ' '.repeat(depth * spacesCount - 2);
+
+const stringify = (value, depth) => {
+  const indent = makeIndent(depth);
+  const indentOfEnd = makeIndent(depth - 1);
+
+  if (!_.isObject(value) && value !== null) {
     return value;
   }
 
   const data = Object.keys(value).map((key) => {
-    if (typeof value[key] === 'object') {
+    if (_.isObject(value[key]) && value[key] !== null) {
       return `${indent}  ${key}: ${stringify(value[key], depth + 1)}`;
     }
     return `${indent}  ${key}: ${value[key]}`;
   });
-  return `\n${data.join('\n')}\n${indentOfEnd}`;
+  return `{\n${data.join('\n')}\n${indentOfEnd}  }`;
 };
 
-const data = { hello: 'world', is: true, nested: { count: 5, bububu: { lala: 55} } };
-stringify(data, 2);
+// const data = { hello: 'world', is: true, nested: { count: 5, bububu: { lala: 55} } };
+// stringify(data, 2);
 
-console.log(stringify(data, 2));
+// console.log(stringify(data, 2));
 
 const getStylish = (diff) => {
-  const iter = (node, depth, spacesCount = 2) => node.map((elem) => {
+  const iter = (node, depth) => node.map((elem) => {
     const {
-      key, value, type, beforeValue, children,
+      name, value, type, beforeValue, children,
     } = elem;
-    const indent = ' '.repeat(spacesCount * depth);
+    const indent = makeIndent(depth);
 
     switch (type) {
       case 'added':
-        return `${indent}+ ${key}: ${stringify(value, depth + 1)}`;
+        return `${indent}+ ${name}: ${stringify(value, depth + 1)}`;
       case 'deleted':
-        return `${indent}- ${key}: ${stringify(value, depth + 1)}`;
+        return `${indent}- ${name}: ${stringify(value, depth + 1)}`;
       case 'not changed':
-        return `${indent}  ${key}: ${value}`;
+        return `${indent}  ${name}: ${value}`;
       case 'changed':
-        return `${indent}- ${key}: ${stringify(beforeValue, depth + 1)}\n
-          ${indent}+ ${key}: ${stringify(value, depth + 1)}`;
+        return `${indent}- ${name}: ${stringify(beforeValue, depth + 1)}\n
+          ${indent}+ ${name}: ${stringify(value, depth + 1)}`;
       case 'parents':
-        return `${indent}  ${key}: {\n${iter(children, depth + 1)}\n${indent}  }`.split(',');
+        return `${indent}  ${name}: {\n${iter(children, depth + 1)}\n${indent}  }`.split(',');
       default:
         throw new Error(`Type error: ${type}`);
     }
