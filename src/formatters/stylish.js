@@ -19,13 +19,13 @@ const stringify = (value, depth) => {
   return `{\n${data.join('\n')}\n${indentOfEnd}  }`;
 };
 
-// const data = { hello: 'world', is: true, nested: { count: 5, bububu: { lala: 55} } };
+// const data = { hello: 'world', is: true, nested: { count: 5, bububu: { lala: 55 } } };
 // stringify(data, 2);
 
 // console.log(stringify(data, 2));
 
 const getStylish = (diff) => {
-  const iter = (node, depth) => node.map((elem) => {
+  const iter = (node, depth) => node.flatMap((elem) => {
     const {
       name, value, type, beforeValue, children,
     } = elem;
@@ -39,14 +39,13 @@ const getStylish = (diff) => {
       case 'not changed':
         return `${indent}  ${name}: ${value}`;
       case 'changed':
-        return `${indent}- ${name}: ${stringify(beforeValue, depth + 1)}\n
-          ${indent}+ ${name}: ${stringify(value, depth + 1)}`;
+        return `${indent}- ${name}: ${stringify(beforeValue, depth + 1)}\n${indent}+ ${name}: ${stringify(value, depth + 1)}`;
       case 'parents':
-        return `${indent}  ${name}: {\n${iter(children, depth + 1)}\n${indent}  }`.split(',');
+        return `${indent}  ${name}: {\n${iter(depth + 1, children)}\n${indent}  }`.split(',');
       default:
         throw new Error(`Type error: ${type}`);
     }
-  }).flat();
+  });
 
   return `{\n${iter(diff, 1).join('\n')}\n}`;
 };
