@@ -6,12 +6,12 @@ const stringify = (value, depth) => {
   const indent = makeIndent(depth);
   const indentOfEnd = makeIndent(depth - 1);
 
-  if (!_.isObject(value) && value !== null) {
+  if (!_.isObject(value)) {
     return value;
   }
 
   const data = Object.keys(value).map((key) => {
-    if (_.isObject(value[key]) && value[key] !== null) {
+    if (_.isObject(value[key])) {
       return `${indent}  ${key}: ${stringify(value[key], depth + 1)}`;
     }
     return `${indent}  ${key}: ${value[key]}`;
@@ -27,21 +27,21 @@ const stringify = (value, depth) => {
 const getStylish = (diff) => {
   const iter = (node, depth) => node.flatMap((elem) => {
     const {
-      name, value, type, beforeValue, children,
+      key, value, type, beforeValue, children,
     } = elem;
     const indent = makeIndent(depth);
 
     switch (type) {
       case 'added':
-        return `${indent}+ ${name}: ${stringify(value, depth + 1)}`;
+        return `${indent}+ ${key}: ${stringify(value, depth + 1)}`;
       case 'deleted':
-        return `${indent}- ${name}: ${stringify(value, depth + 1)}`;
+        return `${indent}- ${key}: ${stringify(value, depth + 1)}`;
       case 'not changed':
-        return `${indent}  ${name}: ${value}`;
+        return `${indent}  ${key}: ${value}`;
       case 'changed':
-        return `${indent}- ${name}: ${stringify(beforeValue, depth + 1)}\n${indent}+ ${name}: ${stringify(value, depth + 1)}`;
+        return `${indent}- ${key}: ${stringify(beforeValue, depth + 1)}\n${indent}+ ${key}: ${stringify(value, depth + 1)}`;
       case 'parents':
-        return `${indent}  ${name}: {\n${iter(depth + 1, children)}\n${indent}  }`.split(',');
+        return `${indent}  ${key}: {\n${iter(children, depth + 1)}\n${indent}  }`.split(',');
       default:
         throw new Error(`Type error: ${type}`);
     }
