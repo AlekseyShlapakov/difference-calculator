@@ -11,5 +11,7 @@
 [![asciicast](https://asciinema.org/a/SVkkmQNrUo4yHOLKcigXdiOGs.svg)](https://asciinema.org/a/SVkkmQNrUo4yHOLKcigXdiOGs)
 # gendiff file1.yml file2.yml<br>
 [![asciicast](https://asciinema.org/a/TALUMVsbxsFSe9p23OPghhVGn.svg)](https://asciinema.org/a/TALUMVsbxsFSe9p23OPghhVGn)
+# gendiff file1.json file2.json recursive comparison<br>
+[![asciicast](https://asciinema.org/a/5PQQYEbey97Ad1GWFXHyMiPF7.svg)](https://asciinema.org/a/5PQQYEbey97Ad1GWFXHyMiPF7)
 
 
