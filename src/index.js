@@ -36,8 +36,8 @@ const genDiff = (filePath1, filePath2, format = 'stylish') => {
   return chooseFormat(diff, format);
 };
 
-// genDiff('__tests__/__fixtures__/file1.json', '__tests__/__fixtures__/file2.yml', 'plain');
-// console.log(genDiff('__tests__/__fixtures__/file1.json',
-// '__tests__/__fixtures__/file2.yml', 'plain'));
+// genDiff('__tests__/__fixtures__/file1.json', '__tests__/__fixtures__/file2.yml', 'json');
+// // console.log(genDiff('__tests__/__fixtures__/file1.json',
+//  '__tests__/__fixtures__/file2.yml', 'json'));
 
 export default genDiff;

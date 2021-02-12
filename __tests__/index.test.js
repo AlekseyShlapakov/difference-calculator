@@ -26,7 +26,9 @@ test.each([
   ['json', 'stylish'],
   ['yml', 'stylish'],
   ['json', 'plain'],
-  ['yml', 'plain']])(
+  ['yml', 'plain'],
+  ['json', 'json'],
+  ['yml', 'json']])(
   'from %s to %s', (extension, format) => {
     const filePath1 = getFixturePath(`file1.${extension}`);
     const filePath2 = getFixturePath(`file2.${extension}`);
