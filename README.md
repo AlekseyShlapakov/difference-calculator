@@ -15,5 +15,7 @@
 [![asciicast](https://asciinema.org/a/5PQQYEbey97Ad1GWFXHyMiPF7.svg)](https://asciinema.org/a/5PQQYEbey97Ad1GWFXHyMiPF7)
 # gendiff file1.json file2.yml flat format<br>
 [![asciicast](https://asciinema.org/a/P3b7MyPG00yMwqjgJnSbNWJKs.svg)](https://asciinema.org/a/P3b7MyPG00yMwqjgJnSbNWJKs)
+# gendiff file1.json file2.yml json format<br>
+[![asciicast](https://asciinema.org/a/PKLkJCOmnDAZHqeb3DbtXfYbZ.svg)](https://asciinema.org/a/PKLkJCOmnDAZHqeb3DbtXfYbZ)
 
 
