@@ -14,7 +14,7 @@ const difference = (data1, data2) => {
       if (!_.has(data1, key)) {
         return { key, value: data2[key], type: 'added' };
       }
-      if (_.isPlainObject(data1[key]) && _.isPlainObject(data2[key])) {
+      if (_.isObject(data1[key]) && _.isObject(data2[key])) {
         return { key, type: 'parents', children: difference(data1[key], data2[key]) };
       }
       if (!_.isEqual(data1[key], data2[key])) {
@@ -36,7 +36,8 @@ const genDiff = (filePath1, filePath2, format = 'stylish') => {
   return chooseFormat(diff, format);
 };
 
-// genDiff('__tests__/__fixtures__/file1.json', '__tests__/__fixtures__/file2.json');
-// console.log(genDiff('__tests__/__fixtures__/file1.json', '__tests__/__fixtures__/file2.json'));
+// genDiff('__tests__/__fixtures__/file1.json', '__tests__/__fixtures__/file2.yml', 'plain');
+// console.log(genDiff('__tests__/__fixtures__/file1.json',
+// '__tests__/__fixtures__/file2.yml', 'plain'));
 
 export default genDiff;
