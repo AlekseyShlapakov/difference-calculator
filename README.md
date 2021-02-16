@@ -8,7 +8,7 @@ Simple CLI utility witch compares two configuration files and shows a difference
 2. Run the command <code>make install</code>.<br>
 3. Run the command <code>make link</code>.
 
-# CodeClimate Maintainability Badge
+## CodeClimate Maintainability Badge
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/AlekseyShlapakov/frontend-project-lvl2/maintainability)
 
