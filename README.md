@@ -7,7 +7,6 @@ Simple CLI utility witch compares two configuration files and shows a difference
 1. Clone the project.<br>
 2. Run the command <code>make install</code>.<br>
 3. Run the command <code>make link</code>.
-<br>
 
 # CodeClimate Maintainability Badge
 
