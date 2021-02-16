@@ -2,7 +2,7 @@
 
 Simple CLI utility witch compares two configuration files and shows a difference.
 
-# How to install?
+### How to install?
 
 1. Clone the project.<br>
 2. Run the command <code>make install</code>.<br>
