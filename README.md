@@ -1,5 +1,12 @@
 # Difference calculator
 
+# How to install?
+
+<code>1. Clone the project.
+2. Run the command make install.
+3. Run the command make link.</code>
+<br>
+
 # CodeClimate Maintainability Badge
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/AlekseyShlapakov/frontend-project-lvl2/maintainability)
