@@ -2,9 +2,9 @@
 
 # How to install?
 
-<code>1. Clone the project.
-2. Run the command make install.
-3. Run the command make link.</code>
+1. Clone the project.<br>
+2. Run the command <code>make install</code>.<br>
+3. Run the command <code>make link</code>.
 <br>
 
 # CodeClimate Maintainability Badge
