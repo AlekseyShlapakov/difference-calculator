@@ -4,6 +4,8 @@ Simple CLI utility witch compares two configuration files and shows a difference
 
 ## How to install?
 
+This program requires node.js (version 13.0 or higher).
+
 1. Clone the project.<br>
 2. Run the command <code>make install</code>.<br>
 3. Run the command <code>make link</code>.
