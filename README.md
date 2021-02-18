@@ -22,7 +22,7 @@ This program requires [node.js](https://nodejs.org/en/) (version 13.0 or higher)
 
 [![CI](https://github.com/AlekseyShlapakov/frontend-project-lvl2/workflows/Node%20CI/badge.svg)](https://github.com/AlekseyShlapakov/frontend-project-lvl2/actions?query=workflow%3A%22Node+CI%22)<br><br>
 
-[![Action Status](https://github.com/AlekseyShlapakov/frontend-project-lvl2/hexlet-check/badge.svg)](https://github.com/AlekseyShlapakov/frontend-project-lvl2/actions?query=workflow%3Ahexlet-check)
+[![Actions Status](https://github.com/AlekseyShlapakov/frontend-project-lvl2/hexlet-check/badge.svg)](https://github.com/AlekseyShlapakov/frontend-project-lvl2/actions?query=workflow%3Ahexlet-check)
 
 ## gendiff file1.json file2.json<br>
 [![asciicast](https://asciinema.org/a/SVkkmQNrUo4yHOLKcigXdiOGs.svg)](https://asciinema.org/a/SVkkmQNrUo4yHOLKcigXdiOGs)
