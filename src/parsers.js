@@ -7,16 +7,14 @@ const parseFile = (filePath) => {
   const format = path.extname(configPath);
   const data = fs.readFileSync(configPath, 'utf8');
 
-  let parse;
-  if (format === '.json') {
-    parse = JSON.parse(data);
-  } else if (format === '.yml') {
-    parse = yaml.load(data);
+  switch (format) {
+    case '.json':
+      return JSON.parse(data);
+    case '.yml':
+      return yaml.load(data);
+    default:
+      throw new TypeError(`Unknown format - ${format}`);
   }
-  return parse;
 };
-
-// parseFile('__tests__/__fixtures__/file1.json');
-// console.log('parseFile', parseFile('__tests__/__fixtures__/file1.yml'));
 
 export default parseFile;
