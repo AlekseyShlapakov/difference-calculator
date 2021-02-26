@@ -19,28 +19,23 @@ const stringify = (value, depth) => {
   return `{\n${data.join('\n')}\n${indentOfEnd}  }`;
 };
 
-// const data = { hello: 'world', is: true, nested: { count: 5, bububu: { lala: 55 } } };
-// stringify(data, 2);
-
-// console.log(stringify(data, 2));
-
-const getStylish = (diff) => {
+const formatStylish = (diff) => {
   const iter = (node, depth) => node.flatMap((elem) => {
     const {
-      key, value, type, beforeValue, children,
+      key, value1, type, value2, children,
     } = elem;
     const indent = makeIndent(depth);
 
     switch (type) {
       case 'added':
-        return `${indent}+ ${key}: ${stringify(value, depth + 1)}`;
+        return `${indent}+ ${key}: ${stringify(value1, depth + 1)}`;
       case 'deleted':
-        return `${indent}- ${key}: ${stringify(value, depth + 1)}`;
-      case 'not changed':
-        return `${indent}  ${key}: ${value}`;
+        return `${indent}- ${key}: ${stringify(value1, depth + 1)}`;
+      case 'unchanged':
+        return `${indent}  ${key}: ${value1}`;
       case 'changed':
-        return `${indent}- ${key}: ${stringify(beforeValue, depth + 1)}\n${indent}+ ${key}: ${stringify(value, depth + 1)}`;
-      case 'parents':
+        return `${indent}- ${key}: ${stringify(value2, depth + 1)}\n${indent}+ ${key}: ${stringify(value1, depth + 1)}`;
+      case 'nested':
         return `${indent}  ${key}: {\n${iter(children, depth + 1)}\n${indent}  }`.split(',');
       default:
         throw new Error(`Type error: ${type}`);
@@ -50,4 +45,4 @@ const getStylish = (diff) => {
   return `{\n${iter(diff, 1).join('\n')}\n}`;
 };
 
-export default getStylish;
+export default formatStylish;

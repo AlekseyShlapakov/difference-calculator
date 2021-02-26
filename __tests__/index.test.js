@@ -12,19 +12,13 @@ const getFixturePath = (filename) => path.resolve(__dirname, '..', '__tests__/__
 const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
 const correctOutput = (format) => readFile(`${format}.txt`);
 
-const extensionsAndFormats = [
-  ['json', 'stylish'],
-  ['yml', 'stylish'],
-  ['json', 'plain'],
-  ['yml', 'plain'],
-  ['json', 'json'],
-  ['yml', 'json'],
-];
+const extensions = ['json', 'yml'];
+const formats = ['stylish', 'plain', 'json'];
 
-test.each(extensionsAndFormats)(
-  'from %s to %s', (extension, format) => {
+describe.each(formats)('Generate differences tests', (format) => {
+  test.each(extensions)(`For %s file type with ${format} format`, (extension) => {
     const filePath1 = getFixturePath(`file1.${extension}`);
     const filePath2 = getFixturePath(`file2.${extension}`);
     expect(genDiff(filePath1, filePath2, format)).toEqual(correctOutput(format));
-  },
-);
+  });
+});

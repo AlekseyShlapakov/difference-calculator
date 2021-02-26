@@ -7,26 +7,24 @@ const getTypeOfValue = (value) => {
   return typeof value === 'string' ? `'${value}'` : value;
 };
 
-const getPlain = (diff) => {
+const formatPlain = (diff) => {
   const iter = (node, depth) => node.flatMap((elem) => {
     const {
-      key, value, type, beforeValue, children,
+      key, value1, type, value2, children,
     } = elem;
 
-    // const outputValue = _.isObject(value) ? '[complex value]' : value;
-    // const outputBeforeValue = _.isObject(beforeValue) ? '[complex value]' : beforeValue;
     const path = `${[...depth, key].join('.')}`;
 
     switch (type) {
       case 'added':
-        return `Property '${path}' was added with value: ${getTypeOfValue(value)}`;
+        return `Property '${path}' was added with value: ${getTypeOfValue(value1)}`;
       case 'deleted':
         return `Property '${path}' was removed`;
-      case 'not changed':
+      case 'unchanged':
         return [];
       case 'changed':
-        return `Property '${path}' was updated. From ${getTypeOfValue(beforeValue)} to ${getTypeOfValue(value)}`;
-      case 'parents':
+        return `Property '${path}' was updated. From ${getTypeOfValue(value2)} to ${getTypeOfValue(value1)}`;
+      case 'nested':
         return iter(children, [path]);
       default:
         throw new Error(`Type error: ${type}`);
@@ -36,4 +34,4 @@ const getPlain = (diff) => {
   return iter(diff, []).join('\n');
 };
 
-export default getPlain;
+export default formatPlain;

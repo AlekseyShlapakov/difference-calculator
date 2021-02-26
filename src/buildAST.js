@@ -3,23 +3,24 @@
 import _ from 'lodash';
 
 const difference = (data1, data2) => {
-  const diff = _.sortBy(_.union(Object.keys(data1), Object.keys(data2)))
+  const keys = _.union(Object.keys(data1), Object.keys(data2));
+  const diff = _.sortBy(keys)
     .map((key) => {
       if (!_.has(data2, key)) {
-        return { key, value: data1[key], type: 'deleted' };
+        return { key, value1: data1[key], type: 'deleted' };
       }
       if (!_.has(data1, key)) {
-        return { key, value: data2[key], type: 'added' };
+        return { key, value1: data2[key], type: 'added' };
       }
       if (_.isObject(data1[key]) && _.isObject(data2[key])) {
-        return { key, type: 'parents', children: difference(data1[key], data2[key]) };
+        return { key, type: 'nested', children: difference(data1[key], data2[key]) };
       }
       if (!_.isEqual(data1[key], data2[key])) {
         return {
-          key, value: data2[key], type: 'changed', beforeValue: data1[key],
+          key, value1: data2[key], type: 'changed', value2: data1[key],
         };
       }
-      return { key, value: data1[key], type: 'not changed' };
+      return { key, value1: data1[key], type: 'unchanged' };
     });
 
   return diff;
