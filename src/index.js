@@ -18,7 +18,7 @@ const getData = (filePath) => fs.readFileSync(getFullPath(filePath), 'utf8');
 
 const genDiff = (filePath1, filePath2, type = 'stylish') => {
   const parseData1 = parse(getData(filePath1), getDataType(filePath1));
-  const parseData2 = parse(getData(filePath2), getDataType(filePath1));
+  const parseData2 = parse(getData(filePath2), getDataType(filePath2));
   const diff = buildAST(parseData1, parseData2);
   return format(diff, type);
 };
