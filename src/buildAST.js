@@ -2,7 +2,7 @@
 /* eslint-disable consistent-return */
 import _ from 'lodash';
 
-const difference = (data1, data2) => {
+const buildAST = (data1, data2) => {
   const keys = _.union(Object.keys(data1), Object.keys(data2));
   const diff = _.sortBy(keys)
     .map((key) => {
@@ -13,7 +13,7 @@ const difference = (data1, data2) => {
         return { key, value1: data2[key], type: 'added' };
       }
       if (_.isObject(data1[key]) && _.isObject(data2[key])) {
-        return { key, type: 'nested', children: difference(data1[key], data2[key]) };
+        return { key, type: 'nested', children: buildAST(data1[key], data2[key]) };
       }
       if (!_.isEqual(data1[key], data2[key])) {
         return {
@@ -26,4 +26,4 @@ const difference = (data1, data2) => {
   return diff;
 };
 
-export default difference;
+export default buildAST;
