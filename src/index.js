@@ -1,5 +1,3 @@
-/* eslint-disable array-callback-return */
-/* eslint-disable consistent-return */
 import fs from 'fs';
 import path from 'path';
 import parse from './parsers.js';
@@ -22,5 +20,7 @@ const genDiff = (filePath1, filePath2, type = 'stylish') => {
   const diff = buildAST(parseData1, parseData2);
   return format(diff, type);
 };
+
+console.log('genDiff', genDiff('__fixtures__/file1.json', '__fixtures__/file2.json', 'plain'));
 
 export default genDiff;

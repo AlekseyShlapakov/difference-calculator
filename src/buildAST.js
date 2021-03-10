@@ -1,5 +1,3 @@
-/* eslint-disable array-callback-return */
-/* eslint-disable consistent-return */
 import _ from 'lodash';
 
 const buildAST = (data1, data2) => {
