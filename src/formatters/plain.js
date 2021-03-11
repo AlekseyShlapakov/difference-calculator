@@ -4,7 +4,7 @@ const getTypeOfValue = (value) => {
   if (_.isObject(value)) {
     return '[complex value]';
   }
-  return typeof value === 'string' ? `'${value}'` : value;
+  return _.isString(value) ? `'${value}'` : value;
 };
 
 const formatPlain = (diff) => {
