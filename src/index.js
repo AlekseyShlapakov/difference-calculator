@@ -20,5 +20,4 @@ const genDiff = (filePath1, filePath2, type = 'stylish') => {
   const diff = buildAST(parseData1, parseData2);
   return format(diff, type);
 };
-
 export default genDiff;
