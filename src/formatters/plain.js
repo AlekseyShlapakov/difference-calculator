@@ -21,7 +21,7 @@ const formatPlain = (diff) => {
       case 'deleted':
         return `Property '${path}' was removed`;
       case 'unchanged':
-        return [];
+        return null;
       case 'changed':
         return `Property '${path}' was updated. From ${getTypeOfValue(value2)} to ${getTypeOfValue(value1)}`;
       case 'nested':
@@ -31,7 +31,7 @@ const formatPlain = (diff) => {
     }
   });
 
-  return iter(diff, []).join('\n');
+  return iter(diff, []).filter((val) => !_.isNull(val)).join('\n');
 };
 
 export default formatPlain;
